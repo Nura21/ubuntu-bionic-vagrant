@@ -78,12 +78,13 @@ Vagrant.configure("2") do |config|
     sudo apt-get upgrade -y
 
     # Install Docker
-    sudo apt-get install -y docker.io
-    sudo systemctl start docker
-    sudo systemctl enable docker
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+    echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    sudo apt-get install apt-transport-https ca-certificates curl gnupg lsb-release -y
+    sudo apt-get update -y
+    sudo apt-get install docker-ce docker-ce-cli containerd.io -y
 
-    # Add your user to the docker group (optional)
-    sudo usermod -aG docker $(whoami)
-    apt-get install -y nginx
+    # Install Nginx
+    sudo apt-get install nginx -y
   SHELL
 end
