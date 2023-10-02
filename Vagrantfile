@@ -84,7 +84,18 @@ Vagrant.configure("2") do |config|
     sudo apt-get upgrade -y
     sudo apt-get install apt-transport-https ca-certificates curl gnupg lsb-release -y
     sudo apt-get update -y
-    sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin -y
+    sudo apt-get upgrade -y
+    sudo apt-get install docker-ce -y
+    sudo apt-get install docker-ce-cli -y
+    sudo apt-get install containerd.io -y 
+    sudo apt-get install docker-compose-plugin -y
+    sudo apt --fix-broken install
+    sudo apt-get install docker-ce -y
+    sudo apt --fix-broken install
+    sudo apt-get install docker-ce -y
+    sudo apt-get install docker-ce-cli -y
+    sudo apt-get install containerd.io -y 
+    sudo apt-get install docker-compose-plugin -y
 
     # Install Nginx
     sudo apt-get install nginx -y
